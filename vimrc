@@ -22,8 +22,8 @@ let g:lightline = {
       \ }
 
 "-- NERDTREE CONFIG
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") && v:this_session == "" | NERDTree | endif
+autocmd BufEnter * if bufname('#') =~# "^NERD_tree_" && winnr('$') > 1 | b# | endif
+map <C-n> :NERDTreeToggle<CR>
 
 "-- ALE CONFIG --
 let g:ale_fixers = {'html': ['prettier']}
